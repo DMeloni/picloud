@@ -1,0 +1,22 @@
+Options +FollowSymlinks -MultiViews
+
+SetEnv PHP_VER 5_TEST
+SetEnv REGISTER_GLOBALS 0
+
+SetEnv allow_url_fopen On
+SetEnv SESSION_USE_TRANS_SID 0
+
+SetENV DISPLAY_ERRORS 0
+
+AddCharset UTF-8 .html 
+     
+RewriteEngine on
+
+
+RewriteRule   ^data/$ index.php?kNdossier=. [QSA]
+
+RewriteRule   ^image/(.+)$ image.php?kNimage=$1 [QSA,L]
+
+RewriteRule   ^data/(.+)/$ index.php?kNdossier=$1 [QSA,L]
+RewriteRule   ^data/(.+)$ index.php?kNdocument=$1 [QSA,L]
+

@@ -1,0 +1,394 @@
+
+/*
+* Reset
+*/
+html,body,div,span,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,abbr,address,cite,code,del,dfn,em,img,ins,kbd,q,samp,small,strong,sub,sup,var,b,i,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,figcaption,figure,footer,header,hgroup,menu,nav,section,summary,time,mark,audio,video{border:0;outline:0;font-size:100%;vertical-align:baseline;background:transparent;margin:0;padding:0;}body{line-height:1;}article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block;}nav ul{list-style:none;}blockquote,q{quotes:none;}blockquote:before,blockquote:after,q:before,q:after{content:none;}a{font-size:100%;vertical-align:baseline;background:transparent;margin:0;padding:0;}ins{background-color:#ff9;color:#000;text-decoration:none;}mark{background-color:#ff9;color:#000;font-style:italic;font-weight:700;}del{text-decoration:line-through;}abbr[title],dfn[title]{border-bottom:1px dotted;cursor:help;}table{border-collapse:collapse;border-spacing:0;}hr{display:block;height:1px;border:0;border-top:1px solid #ccc;margin:1em 0;padding:0;}input,select{vertical-align:middle;}
+
+body{
+	font-family: "Verdana";
+	background:#002458;
+}
+
+#main {
+	margin: 20px;
+}
+
+#midle{
+    margin-left: 40%;
+    text-align:center;	
+}
+#midle img{
+    width: 100%;
+}
+
+#menu{
+    background:none repeat scroll 0 0 #002458;
+    text-align: center;
+    text-align: right;
+    top: 0;
+    width: 100%;
+    margin-bottom: 25px;
+    padding: 15px 0px;
+    z-index:1000;
+}
+
+#menu input{
+	height: 100%;
+}
+
+#menu input, #menu a {
+	margin-top:0;
+	border:none;
+	border-right: 1px solid #434E68;
+	cursor:pointer;
+	background: none;
+    color: #FFFFFF;
+    display: inline-block;
+    padding: 0;
+    line-height: 65px;
+    margin-right: -0.25em;
+    position: relative;
+    text-align: center;
+    text-decoration: none;
+    text-shadow: 0 0 6px #000000;
+    text-transform: uppercase;
+    vertical-align: baseline;
+    width: 20%;
+    font-size:1em;
+    font-family: "Verdana";
+}
+
+#menu input:hover, #menu a:hover{
+
+	border:none;
+	-webkit-appearance: none;
+	border-right: 1px solid #434E68;
+    background-color: #00a9c5;
+}
+
+
+#sidebar {
+	float: left;
+	width: 400px;
+	margin-bottom: 20px;
+	padding-bottom: 40px;
+	z-index:1000;
+	position:relative;
+}
+#inputNouveauDocument {
+    text-align: center;
+    width: 100%;
+}
+
+#fichierSelectionne{
+	color:#FFF !important;
+}
+
+#midle textarea {
+	border:none;
+    background:#FFF; 
+    bottom: auto !important;
+    float: none !important;
+    font-family: "Consolas","Bitstream Vera Sans Mono","Courier New",Courier,monospace !important;
+    font-size: 1em !important;
+    font-style: normal !important;
+    font-weight: normal !important;
+    width:100%;
+    overflow: hidden;
+    padding: 0;
+    outline: none;
+    resize: none;   
+}
+
+#sidebar input{
+	color: #111;
+	font-size:1em;
+}
+
+#listeFichiers a{
+	color: #CCC;
+}
+
+#sidebar ul{
+  list-style-type: none;
+}
+#sidebar li{
+    padding-top:0.5em;
+    padding-bottom:0.5em;	
+    padding-left: 0.5em;
+}
+#sidebar a{
+    text-decoration:none;
+    color: #BBB;
+}
+
+#sidebar a:hover{
+	text-decoration:underline;
+	color: #FFF;
+}
+
+
+#nuf{
+	position:absolute;
+}
+#nuf svg{
+	z-index:1;
+}
+
+.dossier a{
+	color:#0099ef !important;
+}
+
+.dossierPrincipal a{
+	color:#00a9ff !important;
+	font-weight:bold;
+}
+
+
+.upload_form_cont {
+    border: 1px solid transparent;
+    background: #fff;
+    color: #000;
+}
+
+.info {
+    background: #eee;
+    border: 1px solid #ddd;
+    font-weight: bold;
+    margin: 20px;
+}
+
+.info > div {
+    padding: 10px 15px;
+}
+
+.info > h2 {
+    padding: 0 15px;
+}
+
+.dropArea {
+    background: #ddd;
+    border: 3px dashed #000;
+    height: 50px;
+    line-height: 50px;
+    margin: 10px;
+    text-align: center;
+}
+
+.dropArea.hover {
+    background: #ccc;
+}
+
+/* Responsive design */
+
+/* MEDIA QUERY ===================================
+adaptative styles for the width of the visitor's screen */
+
+/* very little screens (less than 799 px) */
+@media (max-width: 749px) {
+	* { text-shadow: none; }
+	h1 {
+		font-size: 1.8em;
+	}
+	#main_logo {
+		width: 41px;
+		height: 41px;
+	}
+	#menu {
+		text-align: center;
+		padding-bottom: 1px;
+	}
+	#menu .sous-menu, #search {
+		display: inline-block;
+		float: none;
+	}
+	#menu input, #menu a{
+		font-size:10px;
+		line-height: 8px;
+	}
+	
+	.sous-menu-bloc {
+		display: none;
+	}
+	#search {
+		display: block;
+		margin: 0px 25px;
+	}
+	#input-rechercher {
+		width: 25%;
+	}
+	#q {
+		width: 70%;
+	}
+	#sidebar {
+		float: none;
+		width: 99%;
+		margin-left: auto;
+		margin-right: auto;
+		font-size:10px;
+	}
+
+	#main {
+		margin: 2px;
+	}
+	#midle {
+		margin: 0;
+		font-size: 0.9em;
+	}
+	.post-cnt, .post-hgr {
+		padding: 5px;
+	}
+	.post-hgr h2 {
+		font-size: 1.1em;
+	}
+	#calendrier caption {
+		line-height: 25px;
+	}
+	#calendrier td {
+		height: 48px;
+		width: 45px;
+	}
+	#calendrier td a {
+		height: 45px;
+		line-height: 45px;
+	}
+	#sidebar ul li {
+		margin-top: 10px;
+	}
+	.mobile-hide {
+		display: none;
+	}
+	#form-commentaire .infos {
+		width: 98%;
+		text-align: left;
+		line-height: 1.3em;
+	}
+	#form-commentaire .infos input {
+		width: 98%;
+		display: block;
+		height: 2em;
+	}
+
+	.syntaxhighlighter {
+	    font-size:10px !important;
+	}
+}
+
+/* less little screens (betwenn 750 and 900 px) */
+@media (max-width: 900px) and (min-width: 750px) {
+	#header h1, #main {
+		margin-left: 5px;
+		margin-right: 5px;
+	}
+	#menu{
+		height:1em;
+	}
+	#menu input, #menu a{
+		font-size:11px;
+		line-height: 10px;
+	}
+	
+	#menu .sous-menu {
+		padding-left: 10px;
+	}
+	#sidebar {
+		width: 220px;
+		font-size:11px;
+	}
+	#sidebar nav {
+		padding-left: 5px;
+		padding-right: 5px;
+	}
+	.post-cnt {
+		padding: 10px 5px;
+	}
+	.itembloc {
+		margin-bottom: 5px;
+	}
+	#main {
+		margin: 2px;
+		font-size: 0.9em;
+	}
+	.post-cnt, .post-hgr {
+		padding: 5px;
+	}
+	.post-hgr h2 {
+		font-size: 1.1em;
+	}
+	.syntaxhighlighter {
+	    font-size:11px !important;
+	}
+}
+
+/* b i g    screens (larger than 1350 px) */
+@media (min-width: 1350px) {
+	h1, #main {
+		max-width: 1200px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+/* very    b  i  g    screens (larger than 1800 px) */
+@media (min-width: 1800px) {
+	body {
+		font-size: 18px;
+	}
+	h1, #main {
+		max-width: 1400px;
+		margin-left: auto;
+		margin-right: auto;
+	}
+}
+
+
+
+
+@media print {
+	body, .post {
+		font-family:"DejaVu Serif", "Times New Roman", Times, serif;
+		background:none!important;
+	}
+	div, h1, h2, h3, h4, h5, h6 {
+		border: none !important;
+	}
+	h1, h2, h3, h4, h5, h6, .comment, .post, .comment a, .post a, .code, code, pre, q, blockquote {
+		background: none!important;
+		text-shadow: none!important;
+		box-shadow: none!important;
+		color: black!important;
+	}
+	#sidebar, #menu, #form-commentaire, #footer {
+		display: none;
+	}
+	h2 a, h3 a {
+		text-decoration: none;
+	}
+
+	*[title]:after {
+		content:" (" attr(title) ")";
+		font-style: italic;
+		color: #0000ff;
+	}
+
+	#midle {
+		margin-right: 0px;
+	}
+
+	pre, blockquote {
+		border:	1px solid gray;
+	}
+
+	img, pre, blockquote {
+		page-break-inside:avoid;
+	}
+
+	p,h2,h3 {
+		widows: 3; /* avoids having pages with < 3 lines of text */
+		orphans: 3; /* same but avoids that < 3 lines from a same <p> are let alone on prev page */
+	}
+	h2, h3, h4 {
+		page-break-after:avoid;
+	}
+}
+
