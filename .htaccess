@@ -10,6 +10,8 @@ SetENV DISPLAY_ERRORS 0
 
 AddCharset UTF-8 .html 
      
+AddDefaultCharset UTF-8
+
 RewriteEngine on
 
 

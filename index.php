@@ -373,7 +373,7 @@ if(!(true === $isDossierEdite || true === $isDocEdite)
 										<script type="text/javascript" src="<?php echo $rootUri;?>scripts/shBrushPlain.js"></script>
 										<link type="text/css" rel="stylesheet" href="<?php echo $rootUri;?>css/shCoreEclipse.css"/>
                                     	<div id="contenuDocumentHighLight">
-                                    	<pre class="brush: <?php echo $extension;?>;"><?php echo (htmlentities ( utf8_encode($contenuFichier) , ENT_COMPAT | ENT_HTML401, 'UTF-8'));?></pre></div>
+                                    	<pre class="brush: <?php echo $extension;?>;"><?php echo htmlspecialchars(utf8_encode($contenuFichier));?></pre></div>
 										<script type="text/javascript">SyntaxHighlighter.all();</script>
                                     <?php
                                 }
