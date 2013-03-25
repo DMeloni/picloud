@@ -177,9 +177,9 @@ if(!checkisDir($repertoireReel)){
 	return;
 }
 if(null !== $SECURE_KEY){
-	$secure = verifieDossierProtege($repertoireReel);
+	$secure = verifieDossierProtege($repertoireReel, $SECURE_KEY, $JSON_ENCODING, $GZ_INFLATING);
 	if(false === $secure){
-	    header('Location:400.html');
+ 	    header('Location:400.html');
 	    return;
 	}
 }

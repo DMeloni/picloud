@@ -8,9 +8,10 @@ function aes_store($file, $datas, $key, $jsonEncode = false, $gz = false){
 //     if (get_magic_quotes_gpc()) {
 //         $datas =  stripslashes($datas);
 //     }
-// 	if(is_string($datas)){
-//     	$datas = mb_check_encoding($datas, 'UTF-8') ? $datas : utf8_encode($datas);
-// 	}
+	if(is_string($datas)){
+    	$datas = mb_check_encoding($datas, 'UTF-8') ? $datas : utf8_encode($datas);
+	}
+	
     if(true === $jsonEncode){
     	$datas = json_encode($datas);
     }
@@ -25,6 +26,7 @@ function aes_store($file, $datas, $key, $jsonEncode = false, $gz = false){
 
 function aes_unstore($file, $key, $jsonEncode = false, $gz = false){
 	$datas = file_get_contents($file);
+	
 	if($datas === false){
 		return '';
 	}
@@ -32,17 +34,19 @@ function aes_unstore($file, $key, $jsonEncode = false, $gz = false){
 	if(true === $gz){
 		$datas = @gzinflate($datas);
 	}
-
+	
 	if(null !== $key){
 		$datas = aes_decrypt($datas, $key);
 	}
-	
+
 	if(true === $jsonEncode){
 	    $datas = json_decode($datas,true);
 	}
+	
 	if(is_string($datas)){
-	    $datas = mb_check_encoding($datas, 'UTF-8') ? utf8_decode($datas) : $datas;
+		$datas = mb_check_encoding($datas, 'UTF-8') ? utf8_decode($datas) : ($datas);
 	}
+	
     return $datas;
 }
 
@@ -54,7 +58,7 @@ function aes_encrypt($val, $ky){
 	//var_export('$key : ' . var_export($key, true));
 	$mode = MCRYPT_MODE_ECB;
 	//var_export('$mode : ' . var_export($mode, true));
-	$enc = MCRYPT_RIJNDAEL_256;
+	$enc = MCRYPT_RIJNDAEL_128;
 	//var_export('$enc : ' . var_export($enc, true));
 	$val=str_pad($val, (16*(floor(strlen($val) / 16) + (strlen($val) % 16 == 0?2:1))), chr(16- (strlen($val) % 16)));
 	//var_export('$val val : ' . var_export($val, true));
@@ -67,7 +71,7 @@ function aes_decrypt($val, $ky){
         $key[$a%16]=chr(ord($key[$a%16]) ^ ord($ky[$a]));
     }
     $mode = MCRYPT_MODE_ECB;
-    $enc = MCRYPT_RIJNDAEL_256;
+    $enc = MCRYPT_RIJNDAEL_128;
     $dec = @mcrypt_decrypt($enc, $key, $val, $mode, @mcrypt_create_iv(@mcrypt_get_iv_size($enc, $mode), MCRYPT_DEV_URANDOM));
     return rtrim($dec, ((
             ord(substr(strlen($dec) - 1, 1)) >=0 and
@@ -102,15 +106,15 @@ function checkisDir($dossier){
 	}
     return mkdir($dossier);
 }
-function verifieDossierProtege($dossier){
+function verifieDossierProtege($dossier, $key, $jsonEncode, $gz){
     $secure = false;
     $pathFichierSecure = sprintf('%s/%s', $dossier, '@secure');
     $clefVerification = 'secure';
     if(! is_file($pathFichierSecure)){
-        aes_store($pathFichierSecure, $clefVerification, $_SESSION['key']);
+        aes_store($pathFichierSecure, $clefVerification, $key, $jsonEncode, $gz);
         $secure = true;
     }else{
-        if($clefVerification === aes_unstore($pathFichierSecure, $_SESSION['key'])){
+        if($clefVerification === aes_unstore($pathFichierSecure, $key, $jsonEncode, $gz)){
             $secure = true;
         }
     }

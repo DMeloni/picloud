@@ -41,16 +41,16 @@ $GLOBALS['DATA_ROOT'] ='data';
  * null : no encryption
  * 'my_key' : encryption with 'my_key'
 */
-$GLOBALS['SECURE_KEY'] = null;
+$GLOBALS['SECURE_KEY'] = 'pko';
 
 /*
  * Active file json_encoding
  */
-$GLOBALS['JSON_ENCODING'] = false;
+$GLOBALS['JSON_ENCODING'] = true;
 
 /*
  * Active file gzip compression
 */
-$GLOBALS['GZ_INFLATING'] = false;
+$GLOBALS['GZ_INFLATING'] = true;
 
 
