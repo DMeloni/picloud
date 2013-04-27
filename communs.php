@@ -212,11 +212,47 @@ function protectUrlDocument($urlDocument){
 	return implode('/', $urlDocument);
 }
 
+/**
+ * Tries to determine Servers' SCRIPT_URL, if it doesn't exist.
+ * The missing superglobal $_SERVER array element will be fixed.
+ *
+ * Example: client requests ... 
+ * http://www.hostname.com/testpage.html?param=value&foo=bar
+ *
+ * ...$_SERVER['SCRIPT_URL'] is (or becomes)
+ * "/testpage.html"
+ *
+ * @return string 
+ * @author Carsten Witt <carsten.witt@gmail.com>
+ * @version 20100206
+ */
+function get_script_url() 
+{
+    $script_url = null;
+
+    if (!empty($_SERVER['SCRIPT_URL']))   
+        $script_url = $_SERVER['SCRIPT_URL'];
+
+    elseif (!empty($_SERVER['REDIRECT_URL'])) 
+        $script_url = $_SERVER['REDIRECT_URL'];
+
+    elseif (!empty($_SERVER['REQUEST_URI'])) {
+        $p = parse_url($_SERVER['REQUEST_URI']);
+        $script_url = $p['path'];
+    }
+    
+    else die (__FILE__." / ".__FUNCTION__.':Couldn\'t determine $_SERVER["SCRIPT_URL"].');
+
+    $_SERVER['SCRIPT_URL'] = $script_url;
+    return $script_url;
+    
+}
+
 /*
  * Get the root uri for css template
 */
 function getRootUri($dirData){
-	$scriptUrl = $_SERVER['SCRIPT_URL'];
+	$scriptUrl = get_script_url();
 	$scriptUrl = explode($dirData, $scriptUrl);
 	if(count($scriptUrl) > 0)
 		return $scriptUrl[0];
